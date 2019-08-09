@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Cali_Remote_Pc.Entity.Action>
+
+
+<div class="border border-left-0  border-secondary" id="actions-area">
+    <div class="h1 text-center text-white font-weight-lighter" style="cursor: pointer;" data-toggle="collapse" data-target="#actions-collapse" aria-expanded="true" aria-controls="collapseOne">Actions</div>
+    <div id="actions-collapse" class="collapse show" aria-labelledby="headingOne" data-parent="#actions-area">
+        <div class="text-center border-top border-secondary" id="headingOne">
+            <div class="btn text-uppercase text-white" style="cursor: pointer;" data-toggle="ajax-action-modal" data-target="#add-action" aria-expanded="true" data-url="@Url.Action("AddAction")">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        <div id="action-modal-placeholder"></div>
+
+        @if (Model.Count() != 0)
+        {
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                var action = Model.ElementAt(i);
+                <div class="text-center border-top border-secondary" id="headingOne">
+                    <div class="btn text-uppercase" style="cursor: pointer; color:#c2c2c2;" data-toggle="collapse" data-target="#action-collapseOne-@i" aria-expanded="true" aria-controls="collapseOne">
+                        @if (action.Name.Count() > 20)
+                        {
+                            <i class="fas fa-chevron-circle-left "></i> @String.Concat(action.Name.Substring(0, 20), "...")
+                        }
+                        else
+                        {
+                            <i class="fas fa-chevron-circle-left "></i> @action.Name
+                        }
+                    </div>
+                </div>
+
+                <div id="action-collapseOne-@i" class="collapse hide" aria-labelledby="headingOne" data-parent="#InfoCard">
+                    <div class="text-info">
+                        <div class="d-flex flex-row">
+                            <div class="flex-fill m-1">Action Name: <span class="text-warning" id="service-name">@action.Name</span></div>
+                            <div class="flex-fill m-1">
+                                Action  State:
+                                <span class="text-danger" id="service-state">@action.State</span>
+                            </div>
+                            <div class="flex-fill m-1">Action Command: <span class="text-warning">@action.Command</span></div>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+            }
+        }
+        </div>
+    </div>

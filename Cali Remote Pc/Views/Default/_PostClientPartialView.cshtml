@@ -1,0 +1,44 @@
+﻿@model Client
+<!-- Modal -->
+<div class="modal fade" id="add-client" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addContactLabel">New Client</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Default" asp-action="PostClientPartialView" method="post">
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input name="Name" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MachineName">Machine Name</label>
+                        <input name="MachineName" class="form-control" />
+                        <span asp-validation-for="MachineName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Platform">Platform</label>
+                        <input name="Platform" class="form-control" />
+                        <span asp-validation-for="Platform" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="State">State</label>
+                        <input type="hidden" id="HiddenState" name="state" value="false" />
+                        <input type="checkbox" id="StateBox" name="state" value="true" checked/>
+                        <span asp-validation-for="State" class="text-danger"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary"  data-save="modal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

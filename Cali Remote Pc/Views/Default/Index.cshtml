@@ -1,0 +1,47 @@
+﻿@model IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="main-container mx-5">
+    <div class="left-sidebar border">@{
+       await Html.RenderPartialAsync("_GetClienstPartialView", Model.viewClients);
+    } </div>
+    <div class="d-flex flex-column mycontain border-top border-bottom">
+
+        <div class="my-3" id="main-actions-area">
+            <label class="ml-4 mb-3 h3 font-weight-light">Main Actions</label>
+            <form class="d-flex flex-row" method="post">
+                <input type="hidden" name="ActionValue" value="" />
+                <button class="btn btn-lg btn-sm btn-outline-info flex-fill mx-3">Sign Out</button>
+                <button class="btn btn-lg btn-sm btn-outline-info flex-fill mx-3">Lock</button>
+                <button class="btn btn-lg btn-sm btn-outline-success flex-fill mx-3">Default</button>
+                <button class="btn btn-lg btn-sm btn-outline-warning flex-fill mx-3">Restart</button>
+                <button class="btn btn-lg btn-sm btn-outline-danger  flex-fill mx-3">Shutdown</button>
+            </form>
+        </div>
+        <hr class="border-danger m-0" />
+        <div id="command-area">
+            <form class="ml-3 my-3 d-flex flex-column align-content-center" method="post">
+                <label class=" h3 font-weight-light">Command</label>
+                <div class="d-inline-flex flex-row justify-content-between">
+                    <input type="text" name="Command" class="form-control col-8" id="commandInput" placeholder="Commands~clear">
+                    <button class="btn btn-sm  btn-outline-danger mr-3 col-3">Attach</button>
+                </div>
+            </form>
+        </div>
+        <hr class="border-danger m-0" />
+        <div class="m-3 d-inline-flex flex-column" id="current-client-area">
+            
+            @{
+                await Html.RenderPartialAsync("_GetCurrentClientPartialView", new Client());
+            }
+        </div>
+
+    </div>
+    <div class="right-sidebar border ">
+        @{
+            await Html.RenderPartialAsync("_GetActionsPartialView", Model.viewActions);
+        }
+    </div>
+</div>

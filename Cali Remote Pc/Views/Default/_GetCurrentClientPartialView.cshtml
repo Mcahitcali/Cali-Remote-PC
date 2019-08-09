@@ -1,0 +1,26 @@
+﻿@model Client
+
+
+@if (Model.UserId == null)
+{
+<label class="ml-2 h3 text-center font-weight-light text-warning">Select Client &nbsp; <i class="fas fa-1x fa-exclamation-triangle"></i></label> 
+}
+else
+{
+    <label class="ml-2 h3 font-weight-light">Current Client</label>
+
+    <div class="text-info ">
+        <div class="d-flex flex-column ">
+            <div class="d-inline-flex  mb-2" style="color:#e2e2e2;">
+                <div class="flex-fill m-1 ">Client Name: <span class="text-info" id="service-name"> @Model.Name</span></div>
+
+                <div class="flex-fill m-1">Client State: <span class="text-success" id="service-state">@Model.State</span></div>
+            </div>
+            <div class="d-inline-flex" style="color:#e2e2e2;">
+                <div class="flex-fill m-1">Client Platform: <span class="text-info">Windows @Model.Platform</span></div>
+
+                <div class="flex-fill m-1">Download Service: <a href="@Url.Action("Download")" class=" fas fa-file-download fa-1x"></a></div>
+            </div>
+        </div>
+    </div>
+}

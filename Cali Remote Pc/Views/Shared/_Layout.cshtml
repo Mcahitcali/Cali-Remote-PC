@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body class="bg-dark" style="margin-bottom: 60px;">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3 text-white">
+            <div class="container ">
+                <a class="navbar-brand" href="@Url.Action("Index")">ShutdownUI</a>
+                
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="navbar-brand ">
+                            <a href="#" class="text-white"><i class="fas fa-user"></i>  @User.Identity.Name | </a>
+                            <a id="logout" href='/logout' class="text-white"><i class="fas fa-sign-out-alt"></i></a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="navbar-brand ">
+                            <a href="#" class="text-white">Login </a>
+                            <a id="login" href="#" class="text-white"><i class="fas fa-sign-in-alt "></i></a>
+                        </div>
+                    }
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="">
+        @RenderBody()
+    </main>
+    <footer class="border-top footer bg-dark text-white-50">
+        <div class="container text-center">
+            &copy; 2019 - Cali Remote PC -
+        </div>
+    </footer>
+    <script src="~/js/site.js"></script>
+</body>
+</html>

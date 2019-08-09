@@ -1,0 +1,295 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+html {
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+
+.footer {
+    color: black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+    /* Vertically center the text there */
+}
+
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+.border-b-1 {
+    border-bottom: 1px solid rgba(162,162,162,.16);
+}
+
+.form-control, .form-control:focus, .input-group-addon {
+    border-color: #e1e1e1;
+    border-radius: 0;
+}
+
+.signup-form {
+    width: 390px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+    .signup-form h2 {
+        color: #636363;
+        margin: 0 0 15px;
+        text-align: center;
+    }
+
+    .signup-form .lead {
+        font-size: 14px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .signup-form form {
+        border-radius: 1px;
+        margin-bottom: 15px;
+        background: #fff;
+        border: 1px solid #f3f3f3;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+
+    .signup-form .form-group {
+        margin-bottom: 20px;
+    }
+
+    .signup-form label {
+        font-weight: normal;
+        font-size: 13px;
+    }
+
+    .signup-form .form-control {
+        min-height: 38px;
+        box-shadow: none !important;
+        border-width: 0 0 1px 0;
+    }
+
+    .signup-form .input-group-addon {
+        max-width: 42px;
+        text-align: center;
+        background: none;
+        border-width: 0 0 1px 0;
+        padding-left: 5px;
+    }
+
+    .signup-form .btn {
+        font-size: 16px;
+        font-weight: bold;
+        background: #19aa8d;
+        border-radius: 3px;
+        border: none;
+        min-width: 140px;
+        outline: none !important;
+    }
+
+        .signup-form .btn:hover, .signup-form .btn:focus {
+            background: #179b81;
+        }
+
+    .signup-form a {
+        color: #19aa8d;
+        text-decoration: none;
+    }
+
+        .signup-form a:hover {
+            text-decoration: underline;
+        }
+
+    .signup-form .fa {
+        font-size: 21px;
+    }
+
+    .signup-form .fa-paper-plane {
+        font-size: 17px;
+    }
+
+    .signup-form .fa-check {
+        color: #fff;
+        left: 9px;
+        top: 18px;
+        font-size: 7px;
+        position: absolute;
+    }
+
+main {
+    justify-content: center;
+}
+
+.main-container {
+    color: #fff;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-areas: 'left middle middle right';
+    grid-row-gap: 25px;
+    justify-content: center;
+}
+
+[class*="col-"] {
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .main-container {
+        grid-template-areas: 'left left left left left left' 'middle middle middle middle middle middle' 'right right right right right right';
+    }
+
+
+    .col-s-1 {
+        width: 8.33%;
+    }
+
+    .col-s-2 {
+        width: 16.66%;
+    }
+
+    .col-s-3 {
+        width: 25%;
+    }
+
+    .col-s-4 {
+        width: 33.33%;
+    }
+
+    .col-s-5 {
+        width: 41.66%;
+    }
+
+    .col-s-6 {
+        width: 50%;
+    }
+
+    .col-s-7 {
+        width: 58.33%;
+    }
+
+    .col-s-8 {
+        width: 66.66%;
+    }
+
+    .col-s-9 {
+        width: 75%;
+    }
+
+    .col-s-10 {
+        width: 83.33%;
+    }
+
+    .col-s-11 {
+        width: 91.66%;
+    }
+
+    .col-s-12 {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+
+    .main-container {
+        grid-template-areas: 'left middle middle right';
+        grid-template-columns: auto auto auto;
+    }
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+}
+
+.left-sidebar {
+    grid-area: left;
+    background-color: #100e17;
+}
+
+.mycontain {
+    grid-area: middle;
+    background-color: #100e17;
+}
+
+.right-sidebar {
+    grid-area: right;
+    background-color: #100e17;
+}
+
+.modal {
+color:black;
+}
