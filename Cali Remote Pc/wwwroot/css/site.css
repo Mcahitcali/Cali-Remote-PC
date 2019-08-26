@@ -293,3 +293,10 @@ main {
 .modal {
 color:black;
 }
+
+.btn-large {
+    padding: 10px 20px;
+    font-size: 20px !important;
+    line-height: 2 !important;
+    width: 75%;
+}

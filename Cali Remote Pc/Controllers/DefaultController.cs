@@ -25,8 +25,7 @@ namespace Cali_Remote_Pc.Controllers
         private readonly string POST_URL = "https://shutdown-remote-api.herokuapp.com/api/postactions";
         private readonly string _userId;
         private readonly User _user;
-
-        private Client _CurrentClient;
+        
         private string Message;
 
         public DefaultController(UserManager<User> userManager, IHttpContextAccessor accessor)
@@ -34,7 +33,6 @@ namespace Cali_Remote_Pc.Controllers
             _userManager = userManager;
             _user = _userManager.GetUserAsync(accessor.HttpContext.User).Result;
             _userId = _userManager.GetUserId(accessor.HttpContext.User);
-            _CurrentClient = new Client();
         }
 
         [HttpGet]
@@ -89,7 +87,7 @@ namespace Cali_Remote_Pc.Controllers
         [HttpPost]
         public IActionResult GetCurrentClient(Client model)
         {
-            _CurrentClient = model;
+            MyClient.Instance = model;
             return PartialView("_GetCurrentClientPartialView", model);
         }
 
@@ -139,9 +137,16 @@ namespace Cali_Remote_Pc.Controllers
         }
 
         [HttpGet]
+        public IActionResult DeleteClient()
+        {
+            DeleteClientRequest(MyClient.Instance.Id);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Download()
         {
-            string filename = "client_" + _userId + ".exe";
+            string filename = "client_" + _userId +"_"+MyClient.Instance.Id.ToString()+ ".exe";
 
             var path = Path.Combine(
                            Directory.GetCurrentDirectory(),
@@ -155,9 +160,6 @@ namespace Cali_Remote_Pc.Controllers
             memory.Position = 0;
             return File(memory, "application/vnd.microsoft.portable-executable", filename);
         }
-
-
-
 
 
         //------ API REQUEST AREA ----- \\
@@ -239,6 +241,20 @@ namespace Cali_Remote_Pc.Controllers
             {
                 Message = e.Message;
                 return GetClients(_userId);
+            }
+        }
+
+        private void DeleteClientRequest(Guid clientid)
+        {
+            try
+            {
+                var request = new Request("https://localhost:44346/api/client/delete/" + clientid, "GET");
+                request.Execute();
+                
+            }
+            catch (Exception err)
+            {
+                
             }
         }
     }

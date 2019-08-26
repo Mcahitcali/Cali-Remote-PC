@@ -16,10 +16,13 @@ else
 
                 <div class="flex-fill m-1">Client State: <span class="text-success" id="service-state">@Model.State</span></div>
             </div>
-            <div class="d-inline-flex" style="color:#e2e2e2;">
-                <div class="flex-fill m-1">Client Platform: <span class="text-info">Windows @Model.Platform</span></div>
+            <div class="d-inline-flex mb-2" style="color:#e2e2e2;">
+                <div class="flex-fill m-1">Client Platform: <span class="text-info">@Model.Platform</span></div>
 
                 <div class="flex-fill m-1">Download Service: <a href="@Url.Action("Download")" class=" fas fa-file-download fa-1x"></a></div>
+            </div>
+            <div class="d-inline-flex " style="color:#e2e2e2;">
+                <a id="delete-client" class="btn-large btn btn-lg btn-sm btn-outline-danger m-auto" href="@Url.Action("DeleteClient")">Delete</a>
             </div>
         </div>
     </div>

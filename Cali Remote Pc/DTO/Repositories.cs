@@ -26,44 +26,7 @@ namespace Cali_Remote_Pc.DTO
         }
         
     }
-
-    //public class ClientRepository : IClientRepository
-    //{
-    //    private CrpDBContext _crpDB;
-
-    //    public ClientRepository(CrpDBContext crpDB)
-    //    {
-    //        _crpDB = crpDB;
-    //    }
-
-    //    public void Add(Client entity)
-    //    {
-    //        _crpDB.ClientDB.Add(entity);
-    //    }
-
-    //    public void Delete(int id)
-    //    {
-    //        Client client = _crpDB.ClientDB.Where(c => c.ClientId == id).FirstOrDefault();
-    //        _crpDB.ClientDB.Remove(client);
-    //    }
-
-    //    public Client GetById(int id)
-    //    {
-    //        Client client = _crpDB.ClientDB.Where(c => c.ClientId == id).FirstOrDefault();
-    //        return client;
-    //    }
-
-    //    public void SaveChanges()
-    //    {
-    //        _crpDB.SaveChanges();
-    //    }
-
-    //    public void Update(Client entity)
-    //    {
-    //        _crpDB.ClientDB.Update(entity);
-    //    }
-    //}
-
+    
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         public CrpDBContext _context;
@@ -82,6 +45,18 @@ namespace Cali_Remote_Pc.DTO
             _context.Set<T>().Remove(entity);
         }
 
+        public T GetActive()
+        {
+            return _context.Set<T>().Where(a => a.State == true).FirstOrDefault();
+        }
+
+        public void SetActive(Guid id)
+        {
+
+            var currnetEntity = GetById(id);
+            currnetEntity.State = true;
+        }
+
         public IEnumerable<T> GetAll(string userId)
         {
             return _context.Set<T>().Where(i => i.UserId == userId).AsEnumerable<T>();
@@ -92,16 +67,17 @@ namespace Cali_Remote_Pc.DTO
             return _context.Set<T>().SingleOrDefault(s => s.Id == Id);
         }
 
-        public void Save()
-        {
-            _context.SaveChanges();
-        }
-
         public void Update(T entity)
         {
             _context.Set<T>().Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
         }
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+
     }
 
     public class ActionRepository : GenericRepository<Action>, IActionRepository

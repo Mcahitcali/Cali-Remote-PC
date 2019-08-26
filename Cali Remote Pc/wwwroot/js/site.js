@@ -22,8 +22,7 @@
         });
 
     });
-
-
+    
 });
 
 $("#actions").click(function (event) {
@@ -42,6 +41,7 @@ function NewClientModel() {
     });
     placeholderElement.on('click', '[data-save="modal"]', function (event) {
         event.preventDefault();
+        console.log(url);
         if ($('#StateBox').is(':checked')) {
             $('#HiddenState').prop('disabled', true);
         }

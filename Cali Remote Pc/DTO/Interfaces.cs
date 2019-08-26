@@ -24,6 +24,8 @@ namespace Cali_Remote_Pc.DTO
     {
         T GetById(Guid Id);
         IEnumerable<T> GetAll(string userId);
+        T GetActive();
+        void SetActive(Guid id);
         void Add(T entity);
         void Update(T entity);
         void Delete(Guid Id);

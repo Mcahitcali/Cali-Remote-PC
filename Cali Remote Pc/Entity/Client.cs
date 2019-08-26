@@ -11,7 +11,7 @@ namespace Cali_Remote_Pc.Entity
     {
         public string MachineName { get; set; }
         public string Platform { get; set; }
-        public long SystemUUID { get; set; }
+        public string SystemUUID { get; set; }
     }
 
 }

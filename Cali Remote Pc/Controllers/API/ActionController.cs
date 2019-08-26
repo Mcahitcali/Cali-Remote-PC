@@ -36,7 +36,7 @@ namespace Cali_Remote_Pc.Controllers.API
         }
         
         [HttpGet("get/{id}")]
-        public ActionResult Get(Guid id)
+        public IActionResult Get(Guid id)
         {
             //get find(id) action
 
@@ -45,7 +45,7 @@ namespace Cali_Remote_Pc.Controllers.API
         }
         
         [HttpGet("getall/{userId}")]
-        public ActionResult GetAll(string userId)
+        public IActionResult GetAll(string userId)
         {
             //get all
             IEnumerable actions = _actionRepository.GetAll(userId);
@@ -53,7 +53,7 @@ namespace Cali_Remote_Pc.Controllers.API
         }
         
         [HttpGet("delete/{id}")]
-        public ActionResult Delete(Guid id)
+        public IActionResult Delete(Guid id)
         {
             //get action and delete
             _actionRepository.Delete(id);
@@ -61,7 +61,7 @@ namespace Cali_Remote_Pc.Controllers.API
         }
         
         [HttpPut("update/{id}")]
-        public ActionResult Update(Action newAction)
+        public IActionResult Update(Action newAction)
         {
             try
             {
@@ -73,6 +73,18 @@ namespace Cali_Remote_Pc.Controllers.API
             {
                 return Ok("Failed Update Action!");
             }
+        }
+
+        [HttpPost("attach")]
+        public IActionResult Attach(Action activeaction)
+        {
+            return Ok();
+        }
+
+        [HttpGet("getactiveaction")]
+        public IActionResult GetActiveAction()
+        {
+            return Ok();
         }
     }
 }

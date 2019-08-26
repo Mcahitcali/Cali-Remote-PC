@@ -37,7 +37,7 @@ namespace Cali_Remote_Pc.Controllers.API
             }
         }
 
-        [HttpPost("get/{id}")]
+        [HttpGet("get/{id}")]
         public ActionResult Get(Guid id)
         {
             //get find(id) Client
@@ -64,10 +64,14 @@ namespace Cali_Remote_Pc.Controllers.API
         }
 
         [HttpPut("update/{id}")]
-        public IActionResult Update(Client newClient)
+        public IActionResult Update(Guid id, Client newClient)
         {
             try
             {
+                if(!id.Equals(newClient.Id))
+                {
+                    return Ok("Failed Update Client!");
+                }
                 _clientRepository.Update(newClient);
                 _clientRepository.Save();
                 return Ok("Successfully Update Client!");
