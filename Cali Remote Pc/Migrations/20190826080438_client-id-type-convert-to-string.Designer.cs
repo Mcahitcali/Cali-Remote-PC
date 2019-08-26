@@ -4,14 +4,16 @@ using Cali_Remote_Pc.Entity.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cali_Remote_Pc.Migrations
 {
     [DbContext(typeof(CrpDBContext))]
-    partial class CrpDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190826080438_client-id-type-convert-to-string")]
+    partial class clientidtypeconverttostring
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
